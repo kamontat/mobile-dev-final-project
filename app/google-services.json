@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "119133020290",
+    "firebase_url": "https://uploadfirebase-2.firebaseio.com",
+    "project_id": "uploadfirebase-2",
+    "storage_bucket": "uploadfirebase-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119133020290:android:e51f20e7fdd04b3e",
+        "android_client_info": {
+          "package_name": "com.kamontat.uploadfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "119133020290-s9375uu6ma952fidtj244vcbee9umheh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeb2DGOx7if7u6kVa34sBtTuFE8XX9aJY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
