@@ -17,11 +17,15 @@
         android:text="@string/empty_image"
         android:textSize="27sp"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/elem_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/display_user_image"
+        android:gravity="center"
         app:srcCompat="@android:drawable/ic_menu_report_image"/>
 
 </LinearLayout>

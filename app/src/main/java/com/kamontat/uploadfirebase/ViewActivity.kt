@@ -19,13 +19,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_view.*
 import android.view.LayoutInflater
 import android.view.Window
+import android.widget.SearchView
 import com.kamontat.uploadfirebase.constants.DATABASE_KEY_CREATED_AT
 import com.kamontat.uploadfirebase.constants.DATABASE_KEY_IMAGE_URL
 import com.kamontat.uploadfirebase.constants.DATABASE_KEY_TITLE
 import kotlinx.android.synthetic.main.content_view.*
 
-
-class ViewActivity : AppCompatActivity() {
+class ViewActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private var recyclerAdapter: FirebaseRecyclerAdapter<Post, PostDataHolder>? = null
 
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -48,7 +48,8 @@ class ViewActivity : AppCompatActivity() {
             return@SnapshotParser Post(
                     it.child(DATABASE_KEY_TITLE).value.toString(),
                     it.child(DATABASE_KEY_IMAGE_URL).value.toString(),
-                    it.child(DATABASE_KEY_CREATED_AT).value.toString()
+                    it.child(DATABASE_KEY_CREATED_AT).value.toString(),
+                    it.key
             )
         }).build()
 
@@ -58,12 +59,14 @@ class ViewActivity : AppCompatActivity() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostDataHolder {
                 val view = LayoutInflater.from(parent.context)
                         .inflate(R.layout.element_of_view, parent, false)
+
                 return PostDataHolder(view)
             }
 
             override fun onBindViewHolder(holder: PostDataHolder, position: Int, model: Post) {
                 holder.setImageUrl(model.imageUrl)
                 holder.setTitle(model.title)
+                holder.setDeleteAction(model)
             }
         }
 
@@ -71,6 +74,18 @@ class ViewActivity : AppCompatActivity() {
 
         val manager = LinearLayoutManager(applicationContext)
         recycle_view.layoutManager = manager
+
+        search_text.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        // recyclerAdapter?.
+        // Here is where we are going to implement the filter logic
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
     }
 
     override fun onStart() {
