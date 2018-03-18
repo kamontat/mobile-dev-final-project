@@ -11,6 +11,8 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -23,14 +25,9 @@ import com.kamontat.uploadfirebase.utils.Logger
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-private const val ROOT_URL_OF_FIREBASE = "https://uploadfirebase-2.firebaseio.com/"
-private const val MY_CODE_FOR_REQUEST_READ_EXTERNAL_STORAGE = 123
-private const val MY_CODE_FOR_REQUEST_GALLERY_IMAGE = 122
-
 class MainActivity : AppCompatActivity() {
 
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-
     private var image: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                 // Should we show an explanation?
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                                 Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                    callGallery()
+                    // callGallery()
                     // Show an explanation to the user *asynchronously* -- don't block
                     // this thread waiting for the user's response! After the user
                     // sees the explanation, try again to request the permission.
@@ -101,6 +98,10 @@ class MainActivity : AppCompatActivity() {
 
         view_button.setOnClickListener {
             startActivity(Intent(applicationContext, ViewActivity::class.java))
+        }
+
+        get_location_btn.setOnClickListener {
+            startActivity(Intent(applicationContext, ViewLocationActivity::class.java))
         }
     }
 
@@ -197,3 +198,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+// private const val ROOT_URL_OF_FIREBASE = "https://uploadfirebase-2.firebaseio.com/"
+private const val MY_CODE_FOR_REQUEST_READ_EXTERNAL_STORAGE = 123
+private const val MY_CODE_FOR_REQUEST_GALLERY_IMAGE = 122

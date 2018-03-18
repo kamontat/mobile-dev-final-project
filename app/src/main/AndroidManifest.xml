@@ -8,7 +8,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="false"
@@ -33,6 +34,11 @@
         <activity
             android:name=".ViewActivity"
             android:label="@string/title_activity_view"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".ViewLocationActivity"
+            android:label="@string/title_activity_view_location"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>

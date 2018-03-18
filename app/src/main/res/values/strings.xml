@@ -21,4 +21,16 @@
     <string name="title_activity_view">ViewActivity</string>
     <string name="empty_image">empty image</string>
     <string name="display_user_image">display user image</string>
+    <string name="location_service">Location service</string>
+    <string name="title_activity_view_location">ViewLocationActivity</string>
+    <string name="update">Update</string>
+    <string name="longitude">longitude</string>
+    <string name="latitude">latitude</string>
+    <string name="zero_3_decimal">0.000</string>
+    <string name="null_str">null</string>
+    <string name="provider">Provider</string>
+    <string name="altitude">Altitude</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="bearing">Bearing</string>
+    <string name="speed">Speed</string>
 </resources>
