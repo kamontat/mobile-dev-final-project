@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     // private var mAuthTask: UserLoginTask? = null
-    private val mAuth: FirebaseAuth? = FirebaseAuth.getInstance()
     private var user: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,6 +69,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return true
         }
+
         if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             return true
         }
@@ -150,7 +150,8 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     private fun attemptRegister() {
         attempt { email: String, pass: String ->
-            mAuth?.createUserWithEmailAndPassword(email, pass)?.addOnCompleteListener(this, { it ->
+
+            FirebaseAuth.getInstance()?.createUserWithEmailAndPassword(email, pass)?.addOnCompleteListener(this, { it ->
                 // mAuthTask = null
                 showProgress(false)
 
@@ -158,7 +159,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                     // Log.d("UploadFirebase", "createUserWithEmail:success")
                     Toast.makeText(this, "Create new user.",
                             Toast.LENGTH_SHORT).show()
-                    user = mAuth.currentUser
+                    user = FirebaseAuth.getInstance().currentUser
                     // openNewPage()
                 } else {
                     Log.w("UploadFirebase", "createUserWithEmail:failure", it.exception)
@@ -174,13 +175,13 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
     private fun attemptLogin() {
         attempt { email: String, pass: String ->
-            mAuth?.signInWithEmailAndPassword(email, pass)?.addOnCompleteListener(this, { it ->
+            FirebaseAuth.getInstance()?.signInWithEmailAndPassword(email, pass)?.addOnCompleteListener(this, { it ->
                 // mAuthTask = null
                 showProgress(false)
 
                 if (it.isSuccessful) {
                     Logger.debug("login", "with email, success")
-                    user = mAuth.currentUser
+                    user = FirebaseAuth.getInstance().currentUser
                     openNewPage()
                 } else {
                     Logger.warning("login", "with email, failure")
@@ -272,8 +273,9 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        user = mAuth?.currentUser
-        // openNewPage(currentUser)
+
+        user = FirebaseAuth.getInstance()?.currentUser
+        if (user != null) openNewPage()
     }
 
     override fun onLoaderReset(cursorLoader: Loader<Cursor>) {

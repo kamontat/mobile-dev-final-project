@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "119133020290-sjd75e3u5ti53bmg7j413io6hkl3lfqg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kamontat.uploadfirebase",
+            "certificate_hash": "b48263a6249d4adf4df41e4234153638acf543d6"
+          }
+        },
+        {
           "client_id": "119133020290-s9375uu6ma952fidtj244vcbee9umheh.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "119133020290-s9375uu6ma952fidtj244vcbee9umheh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

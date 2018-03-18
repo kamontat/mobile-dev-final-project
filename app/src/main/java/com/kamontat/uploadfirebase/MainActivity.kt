@@ -38,9 +38,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        username_message.text = resources.getString(R.string.your_login_is) + " " + mAuth.currentUser?.email ?: "unknown"
+        val head = resources.getString(R.string.your_login_is)
+        val email = (mAuth.currentUser?.email ?: "unknown")
+        val text = "$head $email"
+        username_message.text = text
 
-        signout.setOnClickListener { view ->
+        signout.setOnClickListener {
             mAuth.signOut()
             finish()
         }
@@ -53,28 +56,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         image_button.setOnClickListener {
-
             if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(applicationContext, "Call for permission", Toast.LENGTH_SHORT).show()
                 // Should we show an explanation?
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                                 Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
+                    callGallery()
                     // Show an explanation to the user *asynchronously* -- don't block
                     // this thread waiting for the user's response! After the user
                     // sees the explanation, try again to request the permission.
                     Logger.debug("permission request", "need to show explanation")
                 } else {
-
                     // No explanation needed, we can request the permission.
-
+                    Logger.debug("permission request", "requesting")
                     ActivityCompat.requestPermissions(this,
                             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                             MY_CODE_FOR_REQUEST_READ_EXTERNAL_STORAGE)
-
                 }
+            } else {
+                callGallery()
             }
-            callGallery()
         }
 
         save_button.setOnClickListener(View.OnClickListener {
@@ -92,13 +93,19 @@ class MainActivity : AppCompatActivity() {
 
             if (image == null) {
                 Toast.makeText(applicationContext, "Please enter image", Toast.LENGTH_SHORT).show()
-            } else {
-                saveImageToDatabase(image, name)
+                return@OnClickListener
             }
+
+            saveImageToDatabase(image, name)
         });
+
+        view_button.setOnClickListener {
+            startActivity(Intent(applicationContext, ViewActivity::class.java))
+        }
     }
 
     private fun callGallery() {
+        Logger.debug("gallery", "called")
         val intent = Intent(Intent(Intent.ACTION_PICK)).setType("image/*")
         startActivityForResult(intent, MY_CODE_FOR_REQUEST_GALLERY_IMAGE)
     }
@@ -124,11 +131,11 @@ class MainActivity : AppCompatActivity() {
                         Logger.debug("Upload-timestamp", "complete!")
                         endUpload()
                         Logger.debug("Upload-all", "complete!")
+
+                        Toast.makeText(applicationContext, "Uploaded to the server...", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
-
-            // Glide.with(applicationContext).load(downloadUri).into(image_button)
         }
     }
 
@@ -163,6 +170,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Logger.debug("permission", "requested by $requestCode")
         when (requestCode) {
             MY_CODE_FOR_REQUEST_READ_EXTERNAL_STORAGE -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {

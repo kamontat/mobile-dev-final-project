@@ -2,15 +2,15 @@
 
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteX="16dp"
-    tools:layout_editor_absoluteY="16dp">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/main_layout"
+        android:id="@+id/view_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/activity_vertical_margin"
@@ -21,6 +21,17 @@
         tools:context="com.kamontat.uploadfirebase.MainActivity"
         tools:layout_editor_absoluteY="81dp"
         tools:showIn="@layout/activity_main">
+
+        <ImageButton
+            android:id="@+id/image_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/loaded_image"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username_message"
+            app:srcCompat="@android:drawable/ic_menu_report_image"/>
 
         <EditText
             android:id="@+id/input_message"
@@ -36,7 +47,7 @@
             app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressbar" />
+            app:layout_constraintTop_toBottomOf="@+id/progressbar"/>
 
         <Button
             android:id="@+id/save_button"
@@ -48,7 +59,7 @@
             android:labelFor="@id/input_message"
             android:text="@string/save_image"
             app:layout_constraintStart_toStartOf="@+id/input_message"
-            app:layout_constraintTop_toBottomOf="@+id/input_message" />
+            app:layout_constraintTop_toBottomOf="@+id/input_message"/>
 
         <Button
             android:id="@+id/view_button"
@@ -59,52 +70,41 @@
             android:layout_marginTop="4dp"
             android:text="@string/view_image"
             app:layout_constraintEnd_toEndOf="@+id/input_message"
-            app:layout_constraintTop_toBottomOf="@+id/input_message" />
+            app:layout_constraintTop_toBottomOf="@+id/input_message"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="20dp" />
+            app:layout_constraintGuide_begin="20dp"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp" />
+            app:layout_constraintGuide_begin="20dp"/>
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="20dp" />
-
-        <ImageButton
-            android:id="@+id/image_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@string/loaded_image"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_message"
-            app:srcCompat="@android:drawable/ic_menu_report_image" />
+            app:layout_constraintGuide_begin="20dp"/>
 
         <ProgressBar
             android:id="@+id/progressbar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="15dp"
-            android:layout_below="@+id/main_layout"
+            android:layout_below="@+id/view_layout"
             android:layout_marginTop="24dp"
             android:indeterminate="true"
             android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_button" />
+            app:layout_constraintTop_toBottomOf="@+id/image_button"/>
 
         <TextView
             android:id="@+id/username_message"
@@ -117,7 +117,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 

@@ -18,4 +18,7 @@
     <string name="image_message">image message</string>
     <string name="loaded_image">loaded image</string>
     <string name="your_login_is">Your login.. is</string>
+    <string name="title_activity_view">ViewActivity</string>
+    <string name="empty_image">empty image</string>
+    <string name="display_user_image">display user image</string>
 </resources>
