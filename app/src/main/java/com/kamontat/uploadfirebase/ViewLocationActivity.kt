@@ -20,9 +20,8 @@ import com.kamontat.uploadfirebase.utils.Logger
 import kotlinx.android.synthetic.main.activity_view_location.*
 import kotlinx.android.synthetic.main.content_view_location.*
 
-private const val MY_CODE_FOR_REQUEST_ACCESS_COARSE_LOCATION = 201
-
 class ViewLocationActivity : AppCompatActivity(), android.location.LocationListener {
+    private val MY_CODE_FOR_REQUEST_ACCESS_COARSE_LOCATION = 201
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var mLocationManager: LocationManager
@@ -136,14 +135,9 @@ class ViewLocationActivity : AppCompatActivity(), android.location.LocationListe
                                 grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
                     Logger.debug("permission request", "granted permission")
                     getLocation()
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-
                 } else {
                     Logger.debug("permission request", "denied permission")
                     Toast.makeText(applicationContext, "Permission has been denied!", Toast.LENGTH_SHORT).show()
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                 }
             }
         }

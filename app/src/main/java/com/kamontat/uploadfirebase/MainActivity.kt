@@ -26,6 +26,9 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
+    // private const val ROOT_URL_OF_FIREBASE = "https://uploadfirebase-2.firebaseio.com/"
+    private val MY_CODE_FOR_REQUEST_READ_EXTERNAL_STORAGE = 123
+    private val MY_CODE_FOR_REQUEST_GALLERY_IMAGE = 122
 
     private val mAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private var image: Uri? = null
@@ -177,13 +180,8 @@ class MainActivity : AppCompatActivity() {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     Logger.debug("permission request", "granted permission")
                     callGallery()
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-
                 } else {
                     Logger.debug("permission request", "denied permission")
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                 }
             }
         }
@@ -198,7 +196,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-// private const val ROOT_URL_OF_FIREBASE = "https://uploadfirebase-2.firebaseio.com/"
-private const val MY_CODE_FOR_REQUEST_READ_EXTERNAL_STORAGE = 123
-private const val MY_CODE_FOR_REQUEST_GALLERY_IMAGE = 122
