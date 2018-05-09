@@ -32,11 +32,6 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".ViewLocationActivity"
-            android:label="@string/title_activity_view_location"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
             android:name=".RandomActivity"
             android:label="@string/title_activity_random"
             android:theme="@style/AppTheme.NoActionBar">
