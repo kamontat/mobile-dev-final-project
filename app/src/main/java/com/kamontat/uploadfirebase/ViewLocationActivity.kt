@@ -32,7 +32,7 @@ class ViewLocationActivity : AppCompatActivity(), android.location.LocationListe
         setContentView(R.layout.activity_view_location)
         setSupportActionBar(toolbar_on_view_location)
 
-        signout_on_view_location.setOnClickListener { view ->
+        signout_on_view_location.setOnClickListener { _ ->
             FirebaseAuth.getInstance().signOut()
             finish()
         }

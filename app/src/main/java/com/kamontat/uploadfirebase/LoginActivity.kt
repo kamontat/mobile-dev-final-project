@@ -34,6 +34,10 @@ import java.util.*
  * A login screen that offers login via email/password.
  */
 class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
+    override fun onLoaderReset(loader: Loader<Cursor>?) {
+
+    }
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -96,10 +100,10 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     }
 
     private fun openNewPage() {
+        finish()
         startActivity(Intent(applicationContext, MainActivity::class.java))
         user?.email?.let { Logger.debug("login", it) }
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -276,10 +280,6 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
         user = FirebaseAuth.getInstance()?.currentUser
         if (user != null) openNewPage()
-    }
-
-    override fun onLoaderReset(cursorLoader: Loader<Cursor>) {
-
     }
 
     private fun addEmailsToAutoComplete(emailAddressCollection: List<String>) {

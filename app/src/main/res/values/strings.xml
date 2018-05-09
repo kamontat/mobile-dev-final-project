@@ -33,4 +33,6 @@
     <string name="accuracy">Accuracy</string>
     <string name="bearing">Bearing</string>
     <string name="speed">Speed</string>
+    <string name="title_activity_random">RandomActivity</string>
+    <string name="random">Random</string>
 </resources>

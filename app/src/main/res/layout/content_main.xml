@@ -22,96 +22,58 @@
         tools:layout_editor_absoluteY="81dp"
         tools:showIn="@layout/activity_main">
 
-        <ImageButton
-            android:id="@+id/image_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:contentDescription="@string/loaded_image"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_message"
-            app:srcCompat="@android:drawable/ic_menu_report_image"/>
-
         <EditText
-            android:id="@+id/input_message"
+            android:id="@+id/input_name"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="32dp"
             android:ems="10"
-            android:hint="@string/image_message"
+            android:hint="menu name"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressbar"/>
+            app:layout_constraintTop_toBottomOf="@+id/username_message"/>
+
+        <EditText
+            android:id="@+id/input_image"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:hint="menu image link"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/input_name"/>
 
         <Button
             android:id="@+id/save_button"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="4dp"
-            android:labelFor="@id/input_message"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="64dp"
+            android:labelFor="@id/input_name"
             android:text="@string/save_image"
-            app:layout_constraintStart_toStartOf="@+id/input_message"
-            app:layout_constraintTop_toBottomOf="@+id/input_message"/>
-
-        <Button
-            android:id="@+id/view_button"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/view_image"
-            app:layout_constraintEnd_toEndOf="@+id/input_message"
-            app:layout_constraintTop_toBottomOf="@+id/input_message"/>
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="20dp"/>
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="20dp"/>
-
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="20dp"/>
-
-        <ProgressBar
-            android:id="@+id/progressbar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_below="@+id/view_layout"
-            android:layout_marginTop="24dp"
-            android:indeterminate="true"
-            android:visibility="invisible"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_button"/>
+            app:layout_constraintStart_toStartOf="@+id/input_name"
+            app:layout_constraintTop_toBottomOf="@+id/input_type"/>
 
         <TextView
             android:id="@+id/username_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_width="325dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="64dp"
             android:text="@string/your_login_is"
+            android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -119,16 +81,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
-        <Button
-            android:id="@+id/get_location_btn"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Spinner
+            android:id="@+id/input_type"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:text="@string/location_service"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/save_button"/>
+            app:layout_constraintTop_toBottomOf="@+id/input_image"/>
 
     </android.support.constraint.ConstraintLayout>
 
